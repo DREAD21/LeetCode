@@ -1,0 +1,23 @@
+//Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+
+public class Solution {
+    public int RemoveElement(int[] nums, int val) {
+        int count = 0;
+            for (int i = 0; i < nums.Length-count; i++)
+            {
+                if (nums[i] == val)
+                {
+                    for(int j = i; j < nums.Length-1; j++)
+                    {
+                        nums[j] = nums[j + 1];
+
+                    }
+                    nums[nums.Length - count - 1] = 0;
+                    count++;
+                    i = i - 1;
+                }
+            }
+            
+            return nums.Length-count;
+    }
+}
