@@ -1,0 +1,10 @@
+//Given an integer x, return true if x is palindrome integer.
+//An integer is a palindrome when it reads the same backward as forward.
+
+public class Solution {
+    public bool IsPalindrome(int x) {
+        char[] h = Convert.ToString(x).ToCharArray();
+        return h.SequenceEqual(h.Reverse());
+        
+    }
+}
