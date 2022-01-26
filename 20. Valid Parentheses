@@ -1,0 +1,32 @@
+//Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+public class Solution {
+    public bool IsValid(string s) {
+        if (s.Length % 2 != 0)
+            {
+                return false;
+            }
+            char[] sb = s.ToCharArray();
+            string text = string.Empty;
+            for(int i =0; i < s.Length; i++)
+            {
+                if(i>text.Length)
+                {
+                    return false;
+                }
+                if (sb[i] == '(')
+                {
+                    text = text.Insert(i, "()");
+                }
+                if(sb[i] == '{')
+                {
+                    text = text.Insert(i, "{}");
+                }
+                if (sb[i] == '[')
+                {
+                    text = text.Insert(i, "[]");
+                }
+            }
+            return text == s;
+    }
+}
