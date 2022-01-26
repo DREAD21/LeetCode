@@ -1,0 +1,72 @@
+//Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+
+public class Solution {
+    public int Reverse(int x) {
+        List<char> list = new List<char>();
+            char[] h = x.ToString().ToCharArray();
+            StringBuilder sb = new StringBuilder();
+            string answer;
+            long ans;
+            int answ = 0;
+
+            if ( x > 2147483647)
+            {
+                return 0;
+            }
+            
+            bool bol = false;
+            foreach (char s in h)
+                list.Add(s);
+            if (h.Length == 1)
+            {
+                if(h[0] == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return x;
+                }
+            }
+            if (list[h.Length - 1] == '0')
+            {
+                int z = h.Length - 1;
+                while (list[z] == '0')
+                {
+                    list.RemoveAt(z);
+                    z--;
+                }
+            }
+            if (list[0] == '-')
+            {
+                list.RemoveAt(0);
+                bol = true;
+            }
+            list.Reverse();
+            h = list.ToArray();
+            foreach (char s in h)
+                sb.Append(s);
+            answer = sb.ToString();
+         
+            if (bol == true)
+            {
+                ans = Convert.ToInt64(answer) * -1;
+                if (ans < -2147483647)
+                {
+                    return 0;
+                }
+                answ = Convert.ToInt32(ans);
+            }
+            else
+            {
+                ans = Convert.ToInt64(answer);
+                if (ans > 2147483647)
+                {
+                    return 0;
+                }
+                answ = Convert.ToInt32(ans);
+            }
+            return answ;
+    }
+}
