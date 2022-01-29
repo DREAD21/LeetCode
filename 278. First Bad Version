@@ -1,0 +1,25 @@
+//You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+/* The isBadVersion API is defined in the parent class VersionControl.
+      bool IsBadVersion(int version); */
+
+public class Solution : VersionControl {
+    public int FirstBadVersion(int n) {
+        int right = n;
+        int left = 1;
+        while(left<right)
+        {
+            int middle = left + (right-left)/2;
+            if(!IsBadVersion(middle))
+            {
+                left = middle + 1; 
+            }
+            else
+            {
+                right = middle;
+            }
+            
+        }
+        return left;
+    }
+}
