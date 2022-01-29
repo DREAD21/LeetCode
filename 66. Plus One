@@ -1,0 +1,47 @@
+//You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. 
+//The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+public class Solution {
+    public int[] PlusOne(int[] digits) {
+        bool bol = false;
+            foreach (int x in digits)
+            {
+                if (x != 9)
+                {
+                    bol = true;
+                    break;
+                }                         
+            }
+            if(bol == false)
+            {
+                Array.Resize(ref digits, digits.Length + 1);
+                digits[0] = 1;
+                for(int i = 1; i< digits.Length; i++)
+                {
+                    digits[i] = 0;
+                }
+                return digits;
+            }
+            else
+            {
+                int i = digits.Length - 1;
+                if (digits[i] == 9)
+                {
+                    for(int j = i; j > 0; j--)
+                    {
+                         digits[j] = 0;
+                         if (digits[j - 1] != 9)
+                         {
+                            digits[j - 1] += 1;
+                            break;
+                         }
+                    } 
+                }
+                else
+                {
+                    digits[i] += 1;
+                }
+                return digits;
+            }
+    }
+}
