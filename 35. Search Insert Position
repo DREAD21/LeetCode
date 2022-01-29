@@ -1,0 +1,36 @@
+//Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+//You must write an algorithm with O(log n) runtime complexity.
+
+public class Solution {
+    public int SearchInsert(int[] nums, int target) {
+        Array.Sort(nums);
+            int left = 0;
+            int right = nums.Length;
+            int ans = 0;
+            while (left <= right)
+            {
+                int middle = (left + right) / 2;
+                if (middle > nums.Length - 1 || middle < 0)
+                {
+                    return ans;
+                }
+                if (target == nums[middle])
+                {
+                    ans = middle;
+                    return ans;
+                }
+                if (target <= nums[middle])
+                {
+                    right = middle - 1;
+                    ans = middle;
+                }
+                else
+                {
+                    left = middle + 1;
+                    ans = middle + 1;
+                }
+            }
+            return ans;
+    }
+}
