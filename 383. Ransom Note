@@ -1,0 +1,27 @@
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+        IDictionary<char, int> magazineMap = new Dictionary<char, int>();
+            foreach (var c in magazine)
+            {
+                if (!magazineMap.ContainsKey(c))
+                {
+                    magazineMap[c] = 0;
+                }
+
+                magazineMap[c]++;
+            }
+
+            foreach (var rc in ransomNote)
+            {
+                if (!magazineMap.ContainsKey(rc) || magazineMap[rc] == 0)
+                {
+                    return false;
+                }
+
+                magazineMap[rc]--;
+            }
+
+            return true;
+        
+    }
+}
