@@ -1,0 +1,16 @@
+public class Solution {
+    public bool IsAnagram(string s, string t) {
+        var ch = s.ToCharArray();
+            var ch1 = t.ToCharArray();
+            Array.Sort(ch);
+            Array.Sort(ch1);
+            if (ch.SequenceEqual(ch1))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+}
