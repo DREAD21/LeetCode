@@ -1,0 +1,3 @@
+Select class from Courses
+group by class
+having Count(class)>=5
