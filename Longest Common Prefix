@@ -1,0 +1,30 @@
+using System.Text.RegularExpressions;
+
+public class Solution {
+    public string LongestCommonPrefix(string[] strs) {
+            var first = strs[0];
+            string regex = ("^" + first + "\\w*");
+            for(int i = 0; i < strs.Length; i++)
+            {
+                if(Regex.IsMatch(strs[i], regex))
+                { 
+
+                }
+                else
+                {
+                    while (!Regex.IsMatch(strs[i], regex))
+                    {
+                        if(first.Length == 1)
+                        {
+                            first = "";
+                            return first;
+                        }
+                            
+                        first = first.Substring(0, first.Length - 1);
+                        regex = ("^" + first + "\\w*");
+                    }
+                }
+            }
+        return first;
+    }
+}
