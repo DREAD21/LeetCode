@@ -1,0 +1,31 @@
+public class Solution {
+    public int RomanToInt(string s)
+    {
+        int sum = 0;
+            Dictionary<string, int> dic = new Dictionary<string, int>()
+            {
+                {"IV", 4 },
+                {"IX", 9 },
+                {"XL", 40 },
+                {"XC", 90 },
+                {"CD", 400 },
+                {"CM", 900 },
+                {"I", 1 },
+                {"V", 5 },
+                {"X", 10 },
+                {"L", 50 },
+                {"C", 100 },
+                {"D", 500 },
+                {"M", 1000 }
+            };
+            foreach(var x in dic)
+            {
+                while (s.Contains(x.Key))
+                {
+                    sum += x.Value;
+                    s = s.Remove(s.IndexOf(x.Key), x.Key.Length);
+                }           
+            }
+        return sum;
+        
+    }
